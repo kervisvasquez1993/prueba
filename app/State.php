@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
-    //
+    public function cities()
+    {
+        return $this->hasOne(City::class);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+
+    
 }
