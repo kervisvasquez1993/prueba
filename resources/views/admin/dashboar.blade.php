@@ -37,7 +37,8 @@
     @include('ui.sidebar')
     <div class="main-panel">
       <!-- Navbar -->
-      @include('ui.nav')
+  
+      
       <!-- End Navbar -->
       <div class="content">
        @yield('content')
