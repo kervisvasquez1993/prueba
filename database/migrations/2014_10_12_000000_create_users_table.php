@@ -13,18 +13,20 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        /* agregamos nuevos campos relacionado con el usuario  */
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('phone', 10);
+            $table->string('phone', 14);
             $table->string('identify_card', 11)->comment('campo para cedula');
             $table->foreignId('country_id')->references('id')->on('countries');
-            $table->foreignId('state_id')->references('id')->on('estates');
+            $table->foreignId('state_id')->references('id')->on('states');
             $table->foreignId('city_id')->references('id')->on('cities');
-            $table->timestamp('date_birth');          
+            $table->timestamp('birthdate');          
+            $table->boolean('admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
