@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    SRM Dynamics
+    Prueba Técnica
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   
@@ -27,10 +27,9 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  @include('util.style')
+  @yield('css')
 
 </head>
-
 <body>
 <div id="app">
   <div class="wrapper">
@@ -38,7 +37,7 @@
     <div class="main-panel">
       <!-- Navbar -->
   
-      
+      @include('ui.nav')
       <!-- End Navbar -->
       <div class="content">
        @yield('content')
@@ -48,7 +47,6 @@
     </div> 
   </div>
 </div>
-
   <script src="{{asset('assets/js/core/jquery.min.js')}}"></script>
   <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
   <script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}"></script>
@@ -293,7 +291,7 @@
 
     });
   </script>
-  @include('util.scriptsJs')
+  @yield('scripts')
 </body>
 
 </html>
