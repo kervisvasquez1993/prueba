@@ -1,0 +1,73 @@
+{{-- formulario para crear nuevo usuario --}}
+@component('components.form')
+    @slot('modalId')
+      abrirmodal
+    @endslot
+    
+    @slot('titulo')
+        Añadir Nuevo Usuario
+    @endslot
+    
+    @slot('action')
+    {{route('users.store')}}
+    @endslot
+    
+    @slot('formulario')
+    <div class="form-group">
+        <div class="col-md-12 mb-3">
+            <label for="name">Nombre<span class="red">*</span></label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 mb-3">
+            <label for="email">Correo<span class="red">*</span></label>
+            <input type="text" class="form-control" id="email" name="email">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12 mb-3">
+            <label for="password">Contraseña<span class="red">*</span></label>
+            <input type="text" class="form-control" id="password" name="password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 mb-3">
+            <label for="identify_card">Numero de Cedula<span class="red">*</span></label>
+            <input type="text" class="form-control" id="identify_card" name="identify_card">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12 mb-3">
+            <label for="birthdate">Fecha de Nacimiento<span class="red">*</span></label>
+            <input type="date" class="form-control" id="birthdate" name="birthdate">
+        </div>
+    </div>
+
+    <div class="form-group filter">
+        <div class="col-md-12 mb-3">
+            <label class="label-filter" for="country_id">Pais</label>
+             <select name="country_id" id="_linea" class="form-control @error('country_id') is-invalid @enderror">
+               <option value=""> Seleccione
+                   @foreach ($paises as $item)
+                      <option value="{{$item->id}}"  {{old('country_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                   @endforeach
+               </option>
+             </select>   
+        </div>
+  </div>
+
+  
+
+    
+    
+   
+    
+    <div class="form-group mb-10">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+        <button class="btn btn-success" type="reset" name="reset">Limpiar</button>
+    </div>
+    @endslot
+@endcomponent
