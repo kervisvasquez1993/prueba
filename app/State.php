@@ -8,7 +8,7 @@ class State extends Model
 {
     public function cities()
     {
-        return $this->hasOne(City::class);
+        return $this->hasMany(City::class);
     }
 
     public function users()
