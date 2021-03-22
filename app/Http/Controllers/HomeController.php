@@ -35,7 +35,9 @@ class HomeController extends Controller
          /* validacion */
         $this->validate($request, [
             'mensaje' => 'required',
+            'asunto' => 'required',
             'recipient_id' => 'required| exists:users,id',
+             
 
         ]);
         $mensaje = new Message();
