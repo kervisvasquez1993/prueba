@@ -7,6 +7,8 @@ use App\User;
 use App\State;
 use App\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,15 +28,32 @@ class UserController extends Controller
 
     
     public function store(Request $request)
-    {
+    {   
+        
         
         $data = $request->validate([
-            'nombre' => 'required|',
+            'name' => 'required|',
             'password' => 'required |string |min:8 | confirmed',
             'email' => 'required|email|unique:users',
-            'identify_card' => 'required|date|before:2001-04-15',
-
-        ]);
+            'identify_card' => 'required',
+            'birthdate' => 'required|date|before: -18 years',
+            'country_id' => 'required',
+            'state_id' => 'required',
+            'city_id' => 'required'
+            ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->identify_card = $request->identify_card;
+        $user->password = Hash::make($request->password);
+        $user->identify_card = $request->identify_card;
+        $user->birthdate = $request->birthdate;
+        $user->phone      = $request->phone;
+        $user->country_id = $request->country_id;
+        $user->state_id   = $request->state_id;
+        $user->city_id    = $request->city_id;
+        $user->save();
+        return back()->with('estado', 'Usuario Añadido exitosamente');
 
         
     }
