@@ -83,7 +83,7 @@
                
                 <td class="td-actions">
                     <button 
-                            class="btn btn-warning btn-sm" 
+                            class="btn btn-warning btn-sm d-block" 
                             type="button" 
                             data-id={{$user->id}}
                             data-name={{$user->name}}
@@ -96,9 +96,12 @@
                             data-target="#abrirmodalEditar">
                         Editar
                     </button>
-                    <button class="btn btn-danger btn-sm" type="button" data-toggle="modal" data-target="#abrirmodal">
-                        Eliminar
-                    </button>
+                    
+                    <form action="{{route('users.destroy', ['user' => $user->id] )}}" method="POST" >
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger btn-sm d-block" value="eliminar">
+                    </form>
                 </td>
             </tr>
             @endforeach
