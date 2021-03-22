@@ -82,7 +82,18 @@
                 
                
                 <td class="td-actions">
-                    <button class="btn btn-warning btn-sm" type="button" data-toggle="modal" data-target="#abrirmodal">
+                    <button 
+                            class="btn btn-warning btn-sm" 
+                            type="button" 
+                            data-id={{$user->id}}
+                            data-name={{$user->name}}
+                            data-phone= {{$user->phone}}
+                            data-birthdate = {{date('d-m-y', strtotime($user->birthdate)) }}
+                            data-country = {{$user->country->name}}
+                            data-state = {{$user->state->name}}
+                            data-city =  {{$user->city->name}}
+                            data-toggle="modal" 
+                            data-target="#abrirmodalEditar">
                         Editar
                     </button>
                     <button class="btn btn-danger btn-sm" type="button" data-toggle="modal" data-target="#abrirmodal">
@@ -102,6 +113,10 @@
    {{-- crear nuevo usuario --}}
 
    @include('users.create')
+
+   {{-- editar usuario --}}
+
+   @include('users.edit')
 
  
 @endsection

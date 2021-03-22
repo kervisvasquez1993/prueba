@@ -49803,6 +49803,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./selectDependiente */ "./resources/js/selectDependiente.js");
 
+__webpack_require__(/*! ./editUser */ "./resources/js/editUser.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -49938,6 +49940,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/editUser.js":
+/*!**********************************!*\
+  !*** ./resources/js/editUser.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  if ($('#abrirmodalEditar')) {
+    $('#abrirmodalEditar').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var id_user = button.data('id');
+      var name = button.data('name');
+      var phone = button.data('phone');
+      var birthdate = button.data('birthdate');
+      var country = button.data('country');
+      var state = button.data('state');
+      var city = button.data('city');
+      /* var descripcion_modal_editar = button.data('descripcion')
+       */
+
+      var modal = $(this); // modal.find('.modal-title').text('New message to ' + recipient)
+
+      modal.find('.modal-body #id_user').val(id_user);
+      modal.find('.modal-body #name').val(name);
+      modal.find('.modal-body #phone').val(phone);
+      modal.find('.modal-body #birthdate').val(birthdate);
+      modal.find('.modal-body #id_user').val(id_user);
+      modal.find('.modal-body #country_id').val(country);
+      modal.find('.modal-body #state_id').val(state);
+      modal.find('.modal-body #city_id').val(city);
+    });
+  }
+});
 
 /***/ }),
 

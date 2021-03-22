@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('./selectDependiente')
+require('./editUser')
 window.Vue = require('vue');
 
 /**
