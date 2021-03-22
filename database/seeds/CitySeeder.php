@@ -16,5 +16,14 @@ class CitySeeder extends Seeder
             'name' => 'Valencia',
             'state_id' => "1"
         ]);
+
+        DB::table('cities')->insert([
+            'name' => 'Guacara',
+            'state_id' => "1"
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Maracay',
+            'state_id' => "2"
+        ]);
     }
 }

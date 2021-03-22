@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if(paises)
     {
         console.log('hola')    
-        paises.addEventListener('DOMContentLoaded',(e)=>
+        paises.addEventListener('change',(e)=>
          {
            
-            fetch('/selectpaises',
+            fetch('/selectState',
             {
                 method : 'POST',
                 body: JSON.stringify({texto : e.target.value}),
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
               .then(response => response.json())
               .then( data =>{
-                var opciones ="<option value=''>Sin Categoria</option>";
+                var opciones ="<option value=''>Sin Estado</option>";
                 for (let i in data.lista) {
                    opciones+= `<option value="${data.lista[i].id}">${data.lista[i].name}</option>`;
                 }
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
         estado.addEventListener('change', (e) => 
         {
-            fetch('/selectsubcategoria' , 
+            fetch('/selectCities' , 
             {
                 method  : 'POST',
                 body    :  JSON.stringify({ texto : e.target.value}),
@@ -47,43 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then( response => response.json())
             .then( data => {
-                var opciones ="<option value=''>Sin Sub Categoria</option>";
+                var opciones ="<option value=''>Sin Ciudad</option>";
                 for (let i in data.lista) {
                    opciones+= '<option value="'+data.lista[i].id+'">'+data.lista[i].name+'</option>';
                 }
-                document.getElementById("_subcategoria").innerHTML = opciones;
+                document.getElementById("city_id").innerHTML = opciones;
                
             })
         })
     }
 
-    if(ciudades)
-    {
-        ciudades.addEventListener('change', (e) =>
-        {
-            fetch('/selectsubmarca', 
-            {
-                method : 'POST',
-                body: JSON.stringify({texto : e.target.value}),
-                headers:
-                {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken
-                }
-                
-            })
-            .then( response => response.json())
-            .then(data => 
-                {
-                    var opciones ="<option value=''>Sin Sub Marca</option>";
-                for (let i in data.lista) {
-                   opciones+= `<option value="${data.lista[i].id}">${data.lista[i].name}</option>`;
-                }
-                document.getElementById("submarca").innerHTML = opciones;
-                })
-
-        })
-    }
+   
   
   
 

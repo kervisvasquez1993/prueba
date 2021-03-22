@@ -24,4 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UserController');
 
-Route::post('/selectpaises', 'UserController@selectPaises')->name('selecpais');
+Route::post('/selectState', 'UserController@selectState')->name('selectState');
+Route::post('/selectCities', 'UserController@selectCities')->name('selectCities');
+

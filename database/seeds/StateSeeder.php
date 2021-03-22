@@ -16,5 +16,10 @@ class StateSeeder extends Seeder
             'name' => 'Carabobo',
             'country_id' => '1'
         ]);
+
+        DB::table('states')->insert([
+            'name' => 'Aragua',
+            'country_id' => '1'
+        ]);
     }
 }

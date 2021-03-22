@@ -90,8 +90,43 @@ class UserController extends Controller
         //
     }
 
-    public function selectPaises(Request $request)
+    public function selectState(Request $request)
     {
-       return "hola";
+        if(isset($request->texto)){
+            $state = State::where('country_id' , '=',  $request->texto)->get();
+            return response()->json(
+                [
+                    'lista' => $state,
+                    'success' => true
+                ]
+                );
+        }else{
+            return response()->json(
+                [
+                    'success' => false
+                ]
+                );
+
+        } 
+    }
+
+    public function selectCities(Request $request)
+    {
+        if(isset($request->texto)){
+            $state = City::where('state_id' , '=',  $request->texto)->get();
+            return response()->json(
+                [
+                    'lista' => $state,
+                    'success' => true
+                ]
+                );
+        }else{
+            return response()->json(
+                [
+                    'success' => false
+                ]
+                );
+
+        } 
     }
 }

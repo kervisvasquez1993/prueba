@@ -63,11 +63,8 @@
         <div class="col-md-12 mb-3">
             <label class="label-filter" for="state_id">Estados</label>
              <select name="state_id" id="state_id" class="form-control @error('state_id') is-invalid @enderror">
-               <option value=""> Seleccione
-                   @foreach ($estados as $item)
-                      <option value="{{$item->id}}"  {{old('state_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
-                   @endforeach
-               </option>
+                <option value=""> Sin Estado                 
+                </option>
              </select>   
         </div>
     </div>
@@ -76,10 +73,7 @@
         <div class="col-md-12 mb-3">
             <label class="label-filter" for="city_id">Ciudad</label>
              <select name="city_id" id="city_id" class="form-control @error('city_id') is-invalid @enderror">
-               <option value=""> Seleccione
-                   @foreach ($ciudades as $item)
-                      <option value="{{$item->id}}"  {{old('city_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
-                   @endforeach
+               <option value=""> Sin Ciudad                 
                </option>
              </select>   
         </div>
