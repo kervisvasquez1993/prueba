@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('phone', 14);
+            $table->string('phone', 10);
             $table->string('identify_card', 11)->comment('campo para cedula');
             $table->foreignId('country_id')->references('id')->on('countries');
             $table->foreignId('state_id')->references('id')->on('states');
