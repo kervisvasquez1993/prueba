@@ -4,6 +4,32 @@
     <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#abrirmodal">
         <i class="fa fa-plus fa-2x"></i>&nbsp;&nbsp;Agregar Nuevo Usuario
     </button>
+
+    <!-- SEARCH FORM -->
+    
+    <form 
+    class="form-inline ml-3 mr-2"
+    action="{{ route('producto.search') }}"
+    >
+    @csrf
+      <div class="input-group input-group-sm">
+        <input 
+          class="form-control form-control-navbar" 
+          type="search" 
+          name="q"
+          placeholder="Search" 
+          aria-label="Search"
+          autocomplete="off"
+        >
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    
+  
 </div>
 
 <div class="table-responsive">
@@ -15,7 +41,7 @@
                 <th class="text-lefth">Correo</th>
                 <th class="text-lefth">Numero de Teléfono</th>
                 <th class="text-lefth">Cedula</th>
-                <th class="text-lefth">Fecha de Nacimiento</th>
+                <th class="text-lefth">Edad</th>
                 <th class="text-lefth">Pais</th>
                 <th class="text-lefth">Estado</th>
                 <th class="text-lefth">Ciudad</th>
@@ -40,7 +66,7 @@
                     {{$user->identify_card}}
                 </td>
                 <td>
-                    {{$user->birthdate}}
+                    {{ $fecha_actual::parse($user->birthdate)->age }} Años
                 </td>
                 <td>
                     {{$user->country->name}}

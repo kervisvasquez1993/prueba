@@ -2,11 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
     const paises    = document.getElementById('country_id')
     const estado    = document.getElementById('state_id')
-    const ciudades  = document.getElementById('city_id')
+   
+    
     
     if(paises)
     {
-        console.log('hola')    
+           
         paises.addEventListener('change',(e)=>
          {
            

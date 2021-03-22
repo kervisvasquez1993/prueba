@@ -49952,10 +49952,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
   var paises = document.getElementById('country_id');
   var estado = document.getElementById('state_id');
-  var ciudades = document.getElementById('city_id');
 
   if (paises) {
-    console.log('hola');
     paises.addEventListener('change', function (e) {
       fetch('/selectState', {
         method: 'POST',

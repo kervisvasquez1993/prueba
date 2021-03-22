@@ -17,13 +17,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users    =  User::all();
         $paises   =  Country::all();
         $estados  =  State::all();
         $ciudades =  City::all();
-        return view('users.index', compact('users', 'paises', 'estados' , 'ciudades'));
+        $users    =  User::all();
+        $fecha_actual = Carbon::now();
+
+        return view('users.index', compact('users', 'paises', 'estados' , 'ciudades', 'fecha_actual'));
     }
 
     

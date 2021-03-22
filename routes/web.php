@@ -1,5 +1,8 @@
 <?php
 
+use App\User;
+
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +29,23 @@ Route::resource('users', 'UserController');
 
 Route::post('/selectState', 'UserController@selectState')->name('selectState');
 Route::post('/selectCities', 'UserController@selectCities')->name('selectCities');
+
+
+Route::any('searchProduct', function () {
+    
+    // get user query
+    $q = Request::get('q');
+    
+    // get the products
+    $users = User::where('name', 'LIKE', '%' .$q. '%')
+    ->orWhere('email', 'LIKE', '%' .$q. '%')
+    ->orWhere('identify_card', 'LIKE', '%' .$q. '%')
+    ->orWhere('phone', 'LIKE', '%' .$q. '%')
+    ->paginate(15);
+    $fecha_actual = Carbon::now();
+    
+    // Render the view
+    return view('users.search', compact('q', 'users', 'fecha_actual'));
+    
+})->name('producto.search');
 

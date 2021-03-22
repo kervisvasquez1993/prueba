@@ -39,7 +39,7 @@
     <div class="form-group">
         <div class="col-md-12 mb-3">
             <label for="password">Contraseña<span class="red">*</span></label>
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}">
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}" autocomplete="password">
             @error('password')
             <span class="invalid-feedback d-block" role="alert">
               <strong> {{$message}}</strong>
@@ -50,7 +50,7 @@
     <div class="form-group">
         <div class="col-md-12 mb-3">
             <label for="password">Confirmar Contraseña<span class="red">*</span></label>
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{old('password-confirm')}}">
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{old('password-confirm')}}" autocomplete="password-confirm">
             @error('password-confirm')
             <span class="invalid-feedback d-block" role="alert">
               <strong> {{$message}}</strong>
@@ -115,7 +115,8 @@
         <div class="col-md-12 mb-3">
             <label class="label-filter" for="state_id">Estados</label>
              <select name="state_id" id="state_id" class="form-control @error('state_id') is-invalid @enderror">
-                <option value=""> Sin Estado                 
+                <option value=""> Seleccione
+             
                 </option>
              </select>   
         </div>
@@ -130,8 +131,9 @@
         <div class="col-md-12 mb-3">
             <label class="label-filter" for="city_id">Ciudad</label>
              <select name="city_id" id="city_id" class="form-control @error('city_id') is-invalid @enderror">
-               <option value=""> Sin Ciudad                 
-               </option>
+                <option value=""> Seleccione
+               
+                </option>
              </select>   
         </div>
         @error('city_id')
