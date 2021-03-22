@@ -19,7 +19,7 @@ class UsersSeeder extends Seeder
            'email' => 'kervisvasquez24@gmail.com',
            'password' => Hash::make('123456789'),
            'email_verified_at' => Carbon::now(),
-           'phone' => '04244444161',
+           'phone' => '4244444161',
            'identify_card' => '25672732',
            'country_id' => '1',
            'state_id' => '1',
