@@ -12,8 +12,7 @@
 @endslot
 
 @slot('formulario')
-
-{{csrf_field()}}
+@method('PUT')
 <input type="hidden" id="id_user" name="id_user" value="">
 
 <div class="form-group">

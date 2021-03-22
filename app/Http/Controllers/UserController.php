@@ -17,7 +17,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+  
+
+
+    
+     public function index(Request $request)
     {
         $paises   =  Country::all();
         $estados  =  State::all();
@@ -64,7 +74,7 @@ class UserController extends Controller
     
     public function update(Request $request, $id)
     {
-        //
+        return $request;
     }
 
     /**

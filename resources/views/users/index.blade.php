@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
+<div class="d-flex container-fluid">
     <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#abrirmodal">
         <i class="fa fa-plus fa-2x"></i>&nbsp;&nbsp;Agregar Nuevo Usuario
     </button>
