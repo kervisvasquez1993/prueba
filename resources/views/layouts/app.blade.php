@@ -51,7 +51,16 @@
                         @endif
                        
                            <li class="nav-item mx-4"><a href="{{route('home')}}" class="nav-link">Enviar Mensaje</a></li>
-                           <li class="nav-item"><a href="#" class="nav-link"> Notificaciones <span class="badge">1</span></a></li>
+                           <li class="nav-item">
+                               <a href="#" class="nav-link"> Notificaciones 
+                                        @if($count = Auth::user()->notifications->count())
+                                        <span class="badge">
+                                            {{$count}}
+                                        </span>         
+                                        @endif   
+                                    
+                               </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
