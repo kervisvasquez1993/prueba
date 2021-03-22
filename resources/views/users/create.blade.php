@@ -29,7 +29,13 @@
     <div class="form-group">
         <div class="col-md-12 mb-3">
             <label for="password">Contraseña<span class="red">*</span></label>
-            <input type="text" class="form-control" id="password" name="password">
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 mb-3">
+            <label for="password">Confirmar Contraseña<span class="red">*</span></label>
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
         </div>
     </div>
     <div class="form-group">

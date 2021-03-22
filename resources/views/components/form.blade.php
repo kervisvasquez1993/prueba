@@ -10,7 +10,7 @@
             </div>
            
             <div class="modal-body">
-                <form action="{{$action}}" method="post" class="form-horizontal">
+                <form action="{{$action}}" method="post" class="form-horizontal" novalidate>
                     @csrf        
                     {{$formulario}}
                     
