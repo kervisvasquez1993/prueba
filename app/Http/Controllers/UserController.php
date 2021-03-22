@@ -76,7 +76,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return back()->with('eliminado', 'Usuario Eliminado');
+        return back()->with('eliminado', 'Usuario Eliminado
+        ');
     }
 
     public function selectState(Request $request)

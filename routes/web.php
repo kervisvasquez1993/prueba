@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::resource('users', 'UserController');
 
@@ -48,4 +48,10 @@ Route::any('searchProduct', function () {
     return view('users.search', compact('q', 'users', 'fecha_actual'));
     
 })->name('producto.search');
+
+
+
+/* notificaciones o mensaje */
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/messages', 'HomeController@store')->name('messages.store');
 
