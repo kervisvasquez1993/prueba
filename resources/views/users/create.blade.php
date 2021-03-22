@@ -49,7 +49,7 @@
     <div class="form-group filter">
         <div class="col-md-12 mb-3">
             <label class="label-filter" for="country_id">Pais</label>
-             <select name="country_id" id="_linea" class="form-control @error('country_id') is-invalid @enderror">
+             <select name="country_id" id="country_id" class="form-control @error('country_id') is-invalid @enderror">
                <option value=""> Seleccione
                    @foreach ($paises as $item)
                       <option value="{{$item->id}}"  {{old('country_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
@@ -57,7 +57,34 @@
                </option>
              </select>   
         </div>
-  </div>
+    </div>
+
+    <div class="form-group filter">
+        <div class="col-md-12 mb-3">
+            <label class="label-filter" for="state_id">Estados</label>
+             <select name="state_id" id="state_id" class="form-control @error('state_id') is-invalid @enderror">
+               <option value=""> Seleccione
+                   @foreach ($estados as $item)
+                      <option value="{{$item->id}}"  {{old('state_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                   @endforeach
+               </option>
+             </select>   
+        </div>
+    </div>
+
+    <div class="form-group filter">
+        <div class="col-md-12 mb-3">
+            <label class="label-filter" for="city_id">Ciudad</label>
+             <select name="city_id" id="city_id" class="form-control @error('city_id') is-invalid @enderror">
+               <option value=""> Seleccione
+                   @foreach ($ciudades as $item)
+                      <option value="{{$item->id}}"  {{old('city_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                   @endforeach
+               </option>
+             </select>   
+        </div>
+    </div>
+    
 
   
 

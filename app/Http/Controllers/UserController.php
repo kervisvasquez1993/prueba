@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Country;
+use App\City;
 use App\User;
+use App\State;
+use App\Country;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,9 +17,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $paises = Country::all();
-        return view('users.index', compact('users', 'paises'));
+        $users    =  User::all();
+        $paises   =  Country::all();
+        $estados  =  State::all();
+        $ciudades =  City::all();
+        return view('users.index', compact('users', 'paises', 'estados' , 'ciudades'));
     }
 
     /**
@@ -84,5 +88,10 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function selectPaises(Request $request)
+    {
+       return "hola";
     }
 }

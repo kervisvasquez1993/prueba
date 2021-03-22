@@ -11,7 +11,7 @@
            
             <div class="modal-body">
                 <form action="{{$action}}" method="post" class="form-horizontal">
-                           
+                    @csrf        
                     {{$formulario}}
                     
                     

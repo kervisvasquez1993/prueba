@@ -49801,6 +49801,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./selectDependiente */ "./resources/js/selectDependiente.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -49936,6 +49938,100 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/selectDependiente.js":
+/*!*******************************************!*\
+  !*** ./resources/js/selectDependiente.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+document.addEventListener('DOMContentLoaded', function () {
+  var csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+  var paises = document.getElementById('country_id');
+  var estado = document.getElementById('state_id');
+  var ciudades = document.getElementById('city_id');
+
+  if (paises) {
+    console.log('hola');
+    paises.addEventListener('DOMContentLoaded', function (e) {
+      fetch('/selectpaises', {
+        method: 'POST',
+        body: JSON.stringify({
+          texto: e.target.value
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrfToken
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        var opciones = "<option value=''>Sin Categoria</option>";
+
+        for (var i in data.lista) {
+          opciones += "<option value=\"".concat(data.lista[i].id, "\">").concat(data.lista[i].name, "</option>");
+        }
+
+        document.getElementById("state_id").innerHTML = opciones;
+      })["catch"](function (error) {
+        return console.error(error);
+      });
+    });
+  }
+
+  if (estado) {
+    estado.addEventListener('change', function (e) {
+      fetch('/selectsubcategoria', {
+        method: 'POST',
+        body: JSON.stringify({
+          texto: e.target.value
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrfToken
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        var opciones = "<option value=''>Sin Sub Categoria</option>";
+
+        for (var i in data.lista) {
+          opciones += '<option value="' + data.lista[i].id + '">' + data.lista[i].name + '</option>';
+        }
+
+        document.getElementById("_subcategoria").innerHTML = opciones;
+      });
+    });
+  }
+
+  if (ciudades) {
+    ciudades.addEventListener('change', function (e) {
+      fetch('/selectsubmarca', {
+        method: 'POST',
+        body: JSON.stringify({
+          texto: e.target.value
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrfToken
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        var opciones = "<option value=''>Sin Sub Marca</option>";
+
+        for (var i in data.lista) {
+          opciones += "<option value=\"".concat(data.lista[i].id, "\">").concat(data.lista[i].name, "</option>");
+        }
+
+        document.getElementById("submarca").innerHTML = opciones;
+      });
+    });
+  }
+});
 
 /***/ }),
 
