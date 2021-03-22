@@ -49,8 +49,14 @@
                                 </li>
                             @endif
                         @else
-                           <li class="nav-item"><a href="{{route('home')}}">Enviar Mensaje</a></li>
-                           <li class="nav-item"><a href="#"> Notificaciones <span class="badge">1</span></a></li>
+                        @if(Auth::user()->admin)
+                            <li class="nav-item mx-4">
+                                <a class="nav-link" href="{{route('users.index')}}">Ver Usuario</a>
+                            </li>
+                        @endif
+                       
+                           <li class="nav-item mx-4"><a href="{{route('home')}}" class="nav-link">Enviar Mensaje</a></li>
+                           <li class="nav-item"><a href="#" class="nav-link"> Notificaciones <span class="badge">1</span></a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -80,8 +86,12 @@
                 <div class="alert alert-success">
                     {{session('flash')}}
                 </div>
+
+                
             </div>
             @endif
+
+            
             @yield('content')
         </main>
     </div>

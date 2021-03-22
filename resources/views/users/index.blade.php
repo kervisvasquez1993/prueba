@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('layouts.app')
 @section('content')
 <div class="container-fluid">
     <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#abrirmodal">
