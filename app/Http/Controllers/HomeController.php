@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Message;
 use App\User;
+use App\Message;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Events\MessageSent;
+use App\Notifications\MassageSend;
+
 
 class HomeController extends Controller
 {
@@ -46,11 +47,9 @@ class HomeController extends Controller
         $mensaje->asunto = $request->asunto;
         $mensaje->mensaje = $request->mensaje;
         $mensaje->save();
-         $recipient = User::findOrFail($request->recipient_id);
-         $recipient->notify(new MessageSent($mensaje));
-
-
-         return back()->with('flash', 'Tu mensaje fue enviado');
+        $recipient = User::find($request->recipient_id);
+        $recipient->notify(new MassageSend($mensaje)); 
+        return back()->with('flash', 'Tu mensaje fue enviado');
      }
 
      
