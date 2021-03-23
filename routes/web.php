@@ -55,5 +55,6 @@ Route::any('searchProduct', function () {
 /* notificaciones o mensaje */
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/messages', 'HomeController@store')->name('messages.store');
+Route::post('/messages/{id}', 'HomeController@show')->name('messages.show');
 Route::get('/notificaciones', 'NotificationsController@index')->name('notifications.index');
 
