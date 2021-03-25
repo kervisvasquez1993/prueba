@@ -35,6 +35,11 @@
                              </a> 
                              @endif
                         </li>
+                        <form class="pull-rigth" action="{{route('notifications.destroy', $notification->id)}}" method="post">
+                            @method('DELETE')
+                            @csrf
+                             <button class="btn btn-danger btn-xs">x</button> 
+                        </form>
                     @endforeach
                 </ul>
             </div>
