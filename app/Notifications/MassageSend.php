@@ -5,7 +5,6 @@ namespace App\Notifications;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class MassageSend extends Notification
@@ -58,10 +57,8 @@ class MassageSend extends Notification
     public function toArray($notifiable)
     {
         return [
-            'link' => route('messages.show', $this->message->id),
-            'text' => 'Has REcibido un mensaje' . User::find($this->message->sender_id)->name
-             
-
+            'link' => route('messages.show', $this->mensaje->id),
+            'text' => 'Has Recibido un mensaje de ' . $this->mensaje->sender->name
         ];
     }
 }

@@ -54,7 +54,7 @@ class HomeController extends Controller
 
      public function show($id)
      {
-         $message = Message::findOrField($id);
+         $message = Message::findOrFiel($id);
 
          return view('message.show', compact('messsage'));
      }

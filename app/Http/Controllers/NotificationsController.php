@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Notifications\DatabaseNotification;
 
 class NotificationsController extends Controller
 {
@@ -17,5 +18,11 @@ class NotificationsController extends Controller
             "unreadNotifications" => auth()->user()->unreadNotifications,
             "notifications"       => auth()->user()->readNotifications,
         ]);
+    }
+
+    public function read($id)
+    {
+        DatabaseNotification::find($id)->markAsRead();
+        return back()->with('flash', 'notificacion maecada como leida');
     }
 }

@@ -11,6 +11,11 @@
                           <a href=" {{$unreadNotification->data['link']}}">
                              {{$unreadNotification->data['text']}}
                           </a>
+                          <form class="pull-rigth" action="{{route('notifications.read', $unreadNotification->id)}}" method="post">
+                              @method('PATCH')
+                              @csrf
+                               <button class="btn btn-danger btn-xs">x</button> 
+                          </form>
                         </li>
                     @endforeach
                 </ul>
@@ -20,7 +25,7 @@
                 <ul class="list-group"> 
                     @foreach($notifications as $notification)
                         <li class="list-group-item">
-                            <a href=" {{$notification->data['link']}}">
+                            <a href=" {{$notifications->data['link']}}">
                                 {{$notification->data['text']}}
                              </a>
                         </li>
