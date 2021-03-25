@@ -53,9 +53,11 @@
                            <li class="nav-item mx-4"><a href="{{route('home')}}" class="nav-link">Enviar Mensaje</a></li>
                            <li class="nav-item">
                                <a href="{{route('notifications.index')}}" class="nav-link"> Notificaciones 
-                                        @if($count = Auth::user()->notifications->count())
+                                        @if($count = Auth::user()->unreadNotifications->count() )
                                         <span class="badge">
                                             {{$count}}
+
+                                            
                                         </span>         
                                         @endif   
                                     
