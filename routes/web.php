@@ -1,11 +1,13 @@
 <?php
+namespace App;
 
-use App\Http\Controllers\NotificationsController;
 use App\User;
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NotificationsController;
 
 /*
 |--------------------------------------------------------------------------
