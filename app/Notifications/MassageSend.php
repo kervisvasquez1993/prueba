@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use App\User;
 use Illuminate\Bus\Queueable;
+use Illuminate\Mail\MailManager;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
@@ -31,7 +32,7 @@ class MassageSend extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -42,10 +43,14 @@ class MassageSend extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+         return (new MailMessage)
+                    ->greeting($notifiable->name. ",")
+                    ->subject('Mensja recibido desde tu sitio web')
+                    ->line('Has recibido un mensaje')
+                    ->action('Click para ver el mensaje', route('messages.show', $this->mensaje->id))
+                    ->line('Gracias por usar la aplicacion'); 
+
+      
     }
 
     /**

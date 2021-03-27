@@ -8,9 +8,7 @@
                 <ul class="list-group">
                     @foreach($unreadNotifications as $unreadNotification)
                         <li class="list-group-item">
-
-                         
-                           <a href="{{$unreadNotification->data['link']}}">
+                          <a href="{{$unreadNotification->data['link']}}">
                              {{$unreadNotification->data['text']}}
                           </a> 
                           <form class="pull-rigth" action="{{route('notifications.read', $unreadNotification->id)}}" method="post">
